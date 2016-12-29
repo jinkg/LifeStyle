@@ -1,6 +1,10 @@
 package com.yalin.lifestyle;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import com.yalin.lifestyle.manager.LifecycleConsumerRetriever;
 
 /**
  * YaLin 2016/12/29.
@@ -24,5 +28,30 @@ public class LifeStyle {
   }
 
   LifeStyle(Context context) {
+  }
+
+  public static LifecycleConsumer with(Context context) {
+    LifecycleConsumerRetriever retriever = LifecycleConsumerRetriever.get();
+    return retriever.get(context);
+  }
+
+  public static LifecycleConsumer with(Activity activity) {
+    LifecycleConsumerRetriever retriever = LifecycleConsumerRetriever.get();
+    return retriever.get(activity);
+  }
+
+  public static LifecycleConsumer with(FragmentActivity activity) {
+    LifecycleConsumerRetriever retriever = LifecycleConsumerRetriever.get();
+    return retriever.get(activity);
+  }
+
+  public static LifecycleConsumer with(Fragment fragment) {
+    LifecycleConsumerRetriever retriever = LifecycleConsumerRetriever.get();
+    return retriever.get(fragment);
+  }
+
+  public static LifecycleConsumer with(android.app.Fragment fragment) {
+    LifecycleConsumerRetriever retriever = LifecycleConsumerRetriever.get();
+    return retriever.get(fragment);
   }
 }
